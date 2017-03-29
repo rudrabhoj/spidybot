@@ -9,8 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "pixi.js": "^4.4.3",
-    "radio": "^0.2.0"
+    "pixi.js": "^4.4.3"
   },
   "devDependencies": {
     "babel-plugin-transform-es2015-modules-amd": "^6.24.0",
