@@ -2,7 +2,7 @@ module.exports = (grunt) => {
   grunt.initConfig({
     uglify: {
       options: {
-        mangle: false
+        mangle: true
       },
       js: {
         files: {
@@ -13,6 +13,9 @@ module.exports = (grunt) => {
     browserify: {
       dist: {
         options: {
+          browserifyOptions: {
+                debug: true
+            },
            transform: [['babelify', {presets: ['es2015']}]]
         },
         src: ['src/main.js'],
@@ -22,7 +25,7 @@ module.exports = (grunt) => {
     watch: {
       js: {
         files: ['src/**/*.js'],
-        tasks: ['browserify', 'uglify'],
+        tasks: ['browserify', 'exorcise', 'uglify'],
       }
     },
     'http-server': {
@@ -46,14 +49,23 @@ module.exports = (grunt) => {
           "/readme.html": "README.html"
         }
       }
+    },
+    exorcise: {
+      app: {
+        options: {},
+        files: {
+          'dist/spidybot.js.map':['dist/spidybot.js'],
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-exorcise');
   grunt.loadNpmTasks('grunt-http-server');
 
 
-  grunt.registerTask('default', ['browserify', 'uglify', 'http-server', 'watch']);
+  grunt.registerTask('default', ['browserify', 'exorcise', 'uglify', 'http-server', 'watch']);
 }
