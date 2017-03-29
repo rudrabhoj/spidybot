@@ -1,8 +1,15 @@
+import * as PIXI from 'pixi.js';
+window.PIXI = PIXI;
+
 import Resource from './Resource/main.js';
+import Loader from './Loader/main.js';
 
 window.Spidybot = {
-  Resource: Resource
+  Resource: Resource,
+  Loader: Loader
 }
+
+var test = new Resource.Image('/home/test.png', 'test');
 
 
 

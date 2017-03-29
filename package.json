@@ -8,7 +8,9 @@
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "pixi.js": "^4.4.3"
+  },
   "devDependencies": {
     "babel-plugin-transform-es2015-modules-amd": "^6.24.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
