@@ -9,22 +9,30 @@ class LoadData {
     }
   }
 
-  getImageLinks(){
-    let imgArr = [];
+  getImages(){
+    return this._imgList;
+  }
 
-    for(let c = 0; c < this._imgList.length; c++){
-      let itm = this._imgList[c];
-      let src itm.getSource();
+  getSounds(){
+    return this._sndList;
+  }
 
-      imgArr.push(src);
-    }
-
-    return imgArr;
+  getToalResources(){
+    return this._totalResources;
   }
 
   _allocateResources(){
     this._sndList = [];
     this._imgList = [];
+
+    this._uploadResourceCount();
+  }
+
+  _uploadResourceCount(){
+    this._totalImages = this._imgList.length();
+    this._totalSounds = this._sndList.length();
+
+    this._totalResources = this._totalImages + this._totalSounds;
   }
 
   _checkExist(itm){
