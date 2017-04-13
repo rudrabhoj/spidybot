@@ -15,6 +15,10 @@ class EventManager {
 
   }
 
+  executeEvent(){
+    
+  }
+
   _allocateResources(){
     this._events = [];
   }
@@ -75,6 +79,33 @@ class EventManager {
       return true;
     } else {
       return false;
+    }
+  }
+
+  _addEvent(eventName){
+    let e = this._createNewEvent(eventName);
+
+    this._events.push(e);
+  }
+
+  _addFunction(eventName, fooName, targetFoo, context){
+    eventId = this._indexOfEvent(eventName);
+    let f = this._createNewFunction(fooName, targetFoo, context);
+
+    this._events[eventId]._functions.push(f);
+  }
+
+  _executeEvent(eventName){
+    let eventId = this._indexOfEvent(eventName);
+    if(eventName <= -1){
+      console.warn("Can't find event name: '%s'", eventName);
+    }
+    let targetEvent = this._events[eventId];
+    let fooArr = targetEvent._functions;
+    let lim = fooArr.length;
+
+    for(let c = 0; c < lim; c++){
+      fooArr[c]._target();
     }
   }
 
